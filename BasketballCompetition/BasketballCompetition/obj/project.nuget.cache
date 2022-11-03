@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "B/Xdi318DVCuIVtXtnxcY7GjpryumVGHENKdRnnz7BojuM4m47LX3GgNCRp79J56YIU1AQJ8PsEG2ygwS4iObQ==",
+  "success": true,
+  "projectFilePath": "D:\\Maxima\\WPF Application\\BasketballCompetition\\BasketballCompetition\\BasketballCompetition.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\vasil\\.nuget\\packages\\entityframework\\6.2.0\\entityframework.6.2.0.nupkg.sha512"
+  ],
+  "logs": []
+}

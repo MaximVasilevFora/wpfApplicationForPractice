@@ -1,0 +1,234 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="BasketballSquadModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Category">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="TrainingHalls" Relationship="Self.FK_TrainingHall_Category" FromRole="Category" ToRole="TrainingHall" />
+  </EntityType>
+  <EntityType Name="Club">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="City" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="IdSponsor" Type="Int32" Nullable="false" />
+    <Property Name="IdCoach" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Coach" Relationship="Self.FK_Club_Coach" FromRole="Club" ToRole="Coach" />
+    <NavigationProperty Name="Sponsor" Relationship="Self.FK_Club_Sponsor" FromRole="Club" ToRole="Sponsor" />
+    <NavigationProperty Name="Players" Relationship="Self.FK_Player_Club" FromRole="Club" ToRole="Player" />
+    <NavigationProperty Name="TrainingHalls" Relationship="Self.FK_TrainingHall_Club" FromRole="Club" ToRole="TrainingHall" />
+    <NavigationProperty Name="Transports" Relationship="Self.FK_Transport_Club" FromRole="Club" ToRole="Transport" />
+  </EntityType>
+  <EntityType Name="Coach">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FCs" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Age" Type="Int32" Nullable="false" />
+    <Property Name="Post" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Clubs" Relationship="Self.FK_Club_Coach" FromRole="Coach" ToRole="Club" />
+  </EntityType>
+  <EntityType Name="Player">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Fcs" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="BirthDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Post" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="GameNumber" Type="Int32" Nullable="false" />
+    <Property Name="Role" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Height" Type="Double" Nullable="false" />
+    <Property Name="Weight" Type="Double" Nullable="false" />
+    <Property Name="IdClub" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Club" Relationship="Self.FK_Player_Club" FromRole="Player" ToRole="Club" />
+    <NavigationProperty Name="PlayerHistories" Relationship="Self.FK_PlayerHistory_Player" FromRole="Player" ToRole="PlayerHistory" />
+  </EntityType>
+  <EntityType Name="PlayerHistory">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ClubName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Post" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="GameNumber" Type="Int32" Nullable="false" />
+    <Property Name="Role" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Height" Type="Double" Nullable="false" />
+    <Property Name="Weight" Type="Double" Nullable="false" />
+    <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="IdPlayer" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Player" Relationship="Self.FK_PlayerHistory_Player" FromRole="PlayerHistory" ToRole="Player" />
+  </EntityType>
+  <EntityType Name="Sponsor">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FCs" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="OrganizationName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Clubs" Relationship="Self.FK_Club_Sponsor" FromRole="Sponsor" ToRole="Club" />
+  </EntityType>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="TrainingHall">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Capacity" Type="Int32" Nullable="false" />
+    <Property Name="Phone" Type="String" MaxLength="12" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="IdCategory" Type="Int32" Nullable="false" />
+    <Property Name="IdClub" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Category" Relationship="Self.FK_TrainingHall_Category" FromRole="TrainingHall" ToRole="Category" />
+    <NavigationProperty Name="Club" Relationship="Self.FK_TrainingHall_Club" FromRole="TrainingHall" ToRole="Club" />
+  </EntityType>
+  <EntityType Name="Transport">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Capacity" Type="Int32" Nullable="false" />
+    <Property Name="IdClub" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Club" Relationship="Self.FK_Transport_Club" FromRole="Transport" ToRole="Club" />
+  </EntityType>
+  <Association Name="FK_TrainingHall_Category">
+    <End Role="Category" Type="Self.Category" Multiplicity="1" />
+    <End Role="TrainingHall" Type="Self.TrainingHall" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Category">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="TrainingHall">
+        <PropertyRef Name="IdCategory" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Club_Coach">
+    <End Role="Coach" Type="Self.Coach" Multiplicity="1" />
+    <End Role="Club" Type="Self.Club" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Coach">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Club">
+        <PropertyRef Name="IdCoach" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Club_Sponsor">
+    <End Role="Sponsor" Type="Self.Sponsor" Multiplicity="1" />
+    <End Role="Club" Type="Self.Club" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Sponsor">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Club">
+        <PropertyRef Name="IdSponsor" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Player_Club">
+    <End Role="Club" Type="Self.Club" Multiplicity="1" />
+    <End Role="Player" Type="Self.Player" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Club">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Player">
+        <PropertyRef Name="IdClub" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TrainingHall_Club">
+    <End Role="Club" Type="Self.Club" Multiplicity="1" />
+    <End Role="TrainingHall" Type="Self.TrainingHall" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Club">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="TrainingHall">
+        <PropertyRef Name="IdClub" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Transport_Club">
+    <End Role="Club" Type="Self.Club" Multiplicity="1" />
+    <End Role="Transport" Type="Self.Transport" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Club">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Transport">
+        <PropertyRef Name="IdClub" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PlayerHistory_Player">
+    <End Role="Player" Type="Self.Player" Multiplicity="1" />
+    <End Role="PlayerHistory" Type="Self.PlayerHistory" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Player">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="PlayerHistory">
+        <PropertyRef Name="IdPlayer" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="BasketballSquadEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Categories" EntityType="Self.Category" />
+    <EntitySet Name="Clubs" EntityType="Self.Club" />
+    <EntitySet Name="Coaches" EntityType="Self.Coach" />
+    <EntitySet Name="Players" EntityType="Self.Player" />
+    <EntitySet Name="PlayerHistories" EntityType="Self.PlayerHistory" />
+    <EntitySet Name="Sponsors" EntityType="Self.Sponsor" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+    <EntitySet Name="TrainingHalls" EntityType="Self.TrainingHall" />
+    <EntitySet Name="Transports" EntityType="Self.Transport" />
+    <AssociationSet Name="FK_TrainingHall_Category" Association="Self.FK_TrainingHall_Category">
+      <End Role="Category" EntitySet="Categories" />
+      <End Role="TrainingHall" EntitySet="TrainingHalls" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Club_Coach" Association="Self.FK_Club_Coach">
+      <End Role="Coach" EntitySet="Coaches" />
+      <End Role="Club" EntitySet="Clubs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Club_Sponsor" Association="Self.FK_Club_Sponsor">
+      <End Role="Sponsor" EntitySet="Sponsors" />
+      <End Role="Club" EntitySet="Clubs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Player_Club" Association="Self.FK_Player_Club">
+      <End Role="Club" EntitySet="Clubs" />
+      <End Role="Player" EntitySet="Players" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TrainingHall_Club" Association="Self.FK_TrainingHall_Club">
+      <End Role="Club" EntitySet="Clubs" />
+      <End Role="TrainingHall" EntitySet="TrainingHalls" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Transport_Club" Association="Self.FK_Transport_Club">
+      <End Role="Club" EntitySet="Clubs" />
+      <End Role="Transport" EntitySet="Transports" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PlayerHistory_Player" Association="Self.FK_PlayerHistory_Player">
+      <End Role="Player" EntitySet="Players" />
+      <End Role="PlayerHistory" EntitySet="PlayerHistories" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

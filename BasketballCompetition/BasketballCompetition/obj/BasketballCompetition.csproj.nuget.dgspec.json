@@ -1,0 +1,57 @@
+{
+  "format": 1,
+  "restore": {
+    "D:\\Maxima\\WPF Application\\BasketballCompetition\\BasketballCompetition\\BasketballCompetition.csproj": {}
+  },
+  "projects": {
+    "D:\\Maxima\\WPF Application\\BasketballCompetition\\BasketballCompetition\\BasketballCompetition.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\Maxima\\WPF Application\\BasketballCompetition\\BasketballCompetition\\BasketballCompetition.csproj",
+        "projectName": "BasketballCompetition",
+        "projectPath": "D:\\Maxima\\WPF Application\\BasketballCompetition\\BasketballCompetition\\BasketballCompetition.csproj",
+        "packagesPath": "C:\\Users\\vasil\\.nuget\\packages\\",
+        "outputPath": "D:\\Maxima\\WPF Application\\BasketballCompetition\\BasketballCompetition\\obj\\",
+        "projectStyle": "PackageReference",
+        "skipContentFileWrite": true,
+        "configFilePaths": [
+          "C:\\Users\\vasil\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net48"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net48": {
+            "projectReferences": {}
+          }
+        }
+      },
+      "frameworks": {
+        "net48": {
+          "dependencies": {
+            "EntityFramework": {
+              "target": "Package",
+              "version": "[6.2.0, )"
+            }
+          }
+        }
+      },
+      "runtimes": {
+        "win": {
+          "#import": []
+        },
+        "win-x64": {
+          "#import": []
+        },
+        "win-x86": {
+          "#import": []
+        }
+      }
+    }
+  }
+}
